@@ -10,7 +10,7 @@ const pool = new Pool({
 
 express()
   .set('views', VIEWS)
-  .set('view engine', 'html')
+  .set('view engine', 'ejs')
   .use(express.static(path.join(__dirname, 'public')))
   .get('/', (req, res) => res.sendFile('information.ejs', { root : VIEWS }))
   .get('/db', async (req, res) => {
