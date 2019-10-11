@@ -12,7 +12,7 @@ express()
   .set('views', VIEWS)
   .set('view engine', 'ejs')
   .use(express.static(path.join(__dirname, 'public')))
-  .get('/', (req, res) => res.sendFile('information.ejs', { root : VIEWS }))
+  .get('/', (req, res) => res.render('information'))
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
