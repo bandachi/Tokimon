@@ -18,7 +18,7 @@ express()
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM tokimon');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      res.render('db', results );
       client.release();
     } catch (err) {
       console.error(err);
