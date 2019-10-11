@@ -25,4 +25,17 @@ express()
       res.send("Error " + err);
     }
   })
+  .get('/tokimon/:name', (req, res) => {
+    var tokiNameQuery = `Select * FROM tokimon WHERE name='${req.params.name}'`;
+    //console.log(tokiNameQuery);
+
+    pool.query(tokiNameQuery, (error, result) => {
+      if (error) {
+        res.end(error);
+      }
+      //console.log(result.rows);
+      var results = {'rows':result.rows[0]};
+      res.render('pages/tokimon', results)
+    })
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
