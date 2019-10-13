@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Add
+  </title>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Add a Tokimon</h2>
+
+<form name="add" action="/add" method="post">
+  Tokimon Name: <input type="text" name="tokiName">
+  Weight: <input type="number" min = 0 name = "weight" step = any />
+  Height: <input type="number" min = 0 name = "height" step= any />
+  Fly: <input type="number" min = 0 max = 100 name = "fly" step = 1 />
+  Fight: <input type="number" min = 0 max = 100 name = "fight" step = 1 />
+  Fire: <input type="number" min = 0 max = 100 name = "fire" step = 1 />
+  Water: <input type="number" min = 0 max = 100 name = "water" step = 1 />
+  Electric: <input type="number" min = 0 max = 100 name = "electric" step = 1 />
+  Ice: <input type="number" min = 0 max = 100 name = "ice" step = 1 />
+  Trainer: <input type="text" name="trainer">
+  <input type="submit" value="Add">
+</form>
+
+</div>
+
+</body>
+</html>

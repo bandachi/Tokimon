@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Tokimon Information</h2>
+
+<ul>
+    <% rows.forEach(function(r) { %>
+        <li> <a href="/tokimon/<%= r.id %>"><%= r.name %></a></li>
+    <% }); %>
+</ul>
+
+</div>
+
+</body>
+</html>

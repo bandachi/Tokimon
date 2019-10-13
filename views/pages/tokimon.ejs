@@ -9,8 +9,11 @@
 <body>
 
 <div class="container">
-<h2>Database Results</h2>
+<h2><%= rows.name %></h2>
 
+<form name="delete" action="/delete/<%= rows.id %>" method="post">
+  <input type="submit" value="Delete">
+</form>
 
 </div>
 
