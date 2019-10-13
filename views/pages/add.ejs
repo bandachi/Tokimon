@@ -12,16 +12,16 @@
 <h2>Add a Tokimon</h2>
 
 <form name="add" action="/add" method="post">
-  Tokimon Name: <input type="text" name="tokiName">
-  Weight: <input type="number" min = 0 name = "weight" step = any />
-  Height: <input type="number" min = 0 name = "height" step= any />
-  Fly: <input type="number" min = 0 max = 100 name = "fly" step = 1 />
-  Fight: <input type="number" min = 0 max = 100 name = "fight" step = 1 />
-  Fire: <input type="number" min = 0 max = 100 name = "fire" step = 1 />
-  Water: <input type="number" min = 0 max = 100 name = "water" step = 1 />
-  Electric: <input type="number" min = 0 max = 100 name = "electric" step = 1 />
-  Ice: <input type="number" min = 0 max = 100 name = "ice" step = 1 />
-  Trainer: <input type="text" name="trainer">
+  Tokimon Name: <input type="text" name="tokiName" required >
+  Weight: <input type="number" min = 0 name = "weight" step = any required />
+  Height: <input type="number" min = 0 name = "height" step= any required />
+  Fly: <input type="number" min = 0 max = 100 name = "fly" step = 1 required />
+  Fight: <input type="number" min = 0 max = 100 name = "fight" step = 1 required />
+  Fire: <input type="number" min = 0 max = 100 name = "fire" step = 1 required />
+  Water: <input type="number" min = 0 max = 100 name = "water" step = 1 required />
+  Electric: <input type="number" min = 0 max = 100 name = "electric" step = 1 required />
+  Ice: <input type="number" min = 0 max = 100 name = "ice" step = 1 required />
+  Trainer: <input type="text" name="trainer" required >
   <input type="submit" value="Add">
 </form>
 

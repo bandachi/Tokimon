@@ -28,7 +28,7 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
-      const result = await client.query('SELECT * FROM tokimon');
+      const result = await client.query('SELECT * FROM tokimon;');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
@@ -53,23 +53,22 @@ express()
     var ice = parseInt(req.body.ice);
 
     var total = fly + fight + fire + water + electric + ice;
-    console.log(`INSERT INTO tokimon VALUES (DEFAULT, '${req.body.tokiName}',
-      ${weight}, ${height}, ${fly}, ${fight}, ${fire}, ${water},  ${electric},
-      ${ice}, ${total}, '${req.body.trainer}')`);
 
-    var tokiIDQuery = `INSERT INTO tokimon VALUES (DEFAULT,
+    var tokiQuery = `INSERT INTO tokimon VALUES (DEFAULT,
       '${req.body.tokiName}', ${weight}, ${height}, ${fly}, ${fight}, ${fire},
-      ${water},  ${electric}, ${ice}, ${total}, '${req.body.trainer}')`;
-      
-    pool.query(tokiIDQuery, (error, result) => {
+      ${water},  ${electric}, ${ice}, ${total}, '${req.body.trainer}')
+      RETURNING id;`;
+
+    pool.query(tokiQuery, (error, result) => {
       if (error) {
         res.end(error);
       }
+      var results = result.rows[0];
+      res.redirect(`/tokimon/${results.id}`)
     })
-    res.end();
   })
   .get('/tokimon/:id', (req, res) => {
-    var tokiIDQuery = `SELECT * FROM tokimon WHERE id=${req.params.id}`;
+    var tokiIDQuery = `SELECT * FROM tokimon WHERE id=${req.params.id};`;
 
     pool.query(tokiIDQuery, (error, result) => {
       if (error) {
@@ -81,12 +80,12 @@ express()
   })
   .post('/delete/:id', (req, res) => {
     console.log(req.params.id);
-    var tokiIDQuery = `DELETE FROM tokimon WHERE id=${req.params.id}`;
+    var tokiIDQuery = `DELETE FROM tokimon WHERE id=${req.params.id};`;
     pool.query(tokiIDQuery, (error, result) => {
       if (error) {
         res.end(error);
       }
+      res.redirect('/');
     })
-    res.end();
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
