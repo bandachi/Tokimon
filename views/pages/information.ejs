@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<% include ../partials/nav.ejs %>
 <head>
 </head>
 
@@ -9,7 +10,7 @@
 <h2>Tokimon Information</h2>
 
 <ul>
-    <% rows.forEach(function(r) { %>
+    <% tokimon.forEach(function(r) { %>
         <li> <a href="/tokimon/<%= r.id %>"><%= r.name %></a></li>
     <% }); %>
 </ul>
