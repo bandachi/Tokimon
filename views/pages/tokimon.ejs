@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="../css/tokimon.css" />
 <% include ../partials/nav.ejs %>
 <head>
   <title>
@@ -39,6 +38,10 @@
     <input type="submit" value="Delete">
   </form>
 
+</div>
+
+<div class="picture">
+  <img src="../rabbit.png" alt="<%= tokimon.name %>" width="<%= tokimon.weight*8 %>" height="<%= tokimon.height %>" >
 </div>
 
 </body>

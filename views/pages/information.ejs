@@ -5,15 +5,15 @@
 </head>
 
 <body>
-
+  
 <div class="container">
-<h2>Tokimon Information</h2>
+  <h2>Tokimon Information</h2>
 
-<ul>
-    <% tokimon.forEach(function(r) { %>
-        <li> <a href="/tokimon/<%= r.id %>"><%= r.name %></a></li>
-    <% }); %>
-</ul>
+  <ul>
+      <% tokimon.forEach(function(r) { %>
+          <li> <a href="/tokimon/<%= r.id %>"><%= r.name %></a></li>
+      <% }); %>
+  </ul>
 
 </div>
 

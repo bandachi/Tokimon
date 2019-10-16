@@ -2,6 +2,18 @@ div {
   margin: 10px 10px;
 }
 
+div.container {
+  display: inline-block;
+  vertical-align:top;
+}
+
+div.picture {
+  display: inline-block;
+  text-align: center;
+  margin: 10px 10px;
+  vertical-align:top;
+}
+
 input[name="change"] {
   display: inline;
   color: white;
@@ -10,11 +22,19 @@ input[name="change"] {
   padding: 5px 10px;
 }
 
+input[name="change"]:hover {
+  background-color: #8B0000;
+}
+
 input[type="submit"] {
   color: white;
   background-color: #DC143C;
   text-align: center;
   padding: 5px 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #8B0000;
 }
 
 form[name="delete"] {
