@@ -16,7 +16,7 @@ express()
   .use(express.urlencoded({ extended: false }))
 
   .get('/', (req, res) => {
-    var tokiQuery = `Select * FROM tokimon`;
+    var tokiQuery = `SELECT * FROM tokimon`;
 
     pool.query(tokiQuery, (error, result) => {
       if (error) {
@@ -26,6 +26,41 @@ express()
       res.render('pages/information', results)
     })
   })
+  .post('/', (req, res) => {
+    var parameter = encodeURIComponent(req.body.parameter);
+    var order = encodeURIComponent(req.body.order);
+    res.redirect('/sorted?parameter=' + parameter + '&order=' + order);
+  })
+
+  .get('/sorted', (req, res) => {
+    var parameter = req.query.parameter;
+    var order = req.query.order;
+    console.log(parameter);
+    console.log(order);
+    var tokiQuery = `SELECT * FROM tokimon ORDER BY ${parameter} ${order}`;
+    console.log(tokiQuery);
+
+    pool.query(tokiQuery, (error, result) => {
+      if (error) {
+        res.end(error);
+      }
+      var results = {'tokimon':result.rows};
+      res.render('pages/information', results)
+    })
+  })
+
+  // .get('/sorted', (req, res) => {
+  //   var tokiQuery = `SELECT * FROM tokimon ORDER BY ${req.session.user.parameter} ${req.session.body.order}`;
+  //   console.log(tokiQuery);
+  //
+  //   pool.query(tokiQuery, (error, result) => {
+  //     if (error) {
+  //       res.end(error);
+  //     }
+  //     var results = {'tokimon':result.rows};
+  //     res.render('pages/information', results)
+  //   })
+  // })
 
   .get('/add', (req, res) => {
     res.render('pages/add');

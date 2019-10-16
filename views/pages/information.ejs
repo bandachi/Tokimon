@@ -5,7 +5,30 @@
 </head>
 
 <body>
-  
+
+<b>Sort by:</b>
+<form name="sort" action="/" method="post">
+  <select name="parameter">
+    <option value="id">Chronological</option>
+    <option value="name">Name</option>
+    <option value="weight">Weight</option>
+    <option value="height">Height</option>
+    <option value="fly">Fly</option>
+    <option value="fight">Fight</option>
+    <option value="fire">Fire</option>
+    <option value="water">Water</option>
+    <option value="electric">Electric</option>
+    <option value="ice">Ice</option>
+    <option value="total">Total</option>
+    <option value="trainer">Trainer</option>
+  </select>
+  <select name="order">
+    <option value="ASC">Ascending</option>
+    <option value="DESC">Descending</option>
+  </select>
+  <input type="submit" value="Sort">
+</form>
+
 <div class="container">
   <h2>Tokimon Information</h2>
 
