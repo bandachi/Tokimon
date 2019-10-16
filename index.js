@@ -35,10 +35,7 @@ express()
   .get('/sorted', (req, res) => {
     var parameter = req.query.parameter;
     var order = req.query.order;
-    console.log(parameter);
-    console.log(order);
     var tokiQuery = `SELECT * FROM tokimon ORDER BY ${parameter} ${order}`;
-    console.log(tokiQuery);
 
     pool.query(tokiQuery, (error, result) => {
       if (error) {
@@ -49,25 +46,10 @@ express()
     })
   })
 
-  // .get('/sorted', (req, res) => {
-  //   var tokiQuery = `SELECT * FROM tokimon ORDER BY ${req.session.user.parameter} ${req.session.body.order}`;
-  //   console.log(tokiQuery);
-  //
-  //   pool.query(tokiQuery, (error, result) => {
-  //     if (error) {
-  //       res.end(error);
-  //     }
-  //     var results = {'tokimon':result.rows};
-  //     res.render('pages/information', results)
-  //   })
-  // })
-
   .get('/add', (req, res) => {
     res.render('pages/add');
   })
   .post('/add', (req, res) => {
-    //console.log(req.body);
-
     var weight = parseFloat(req.body.weight);
     var height = parseFloat(req.body.height);
     var fly = parseInt(req.body.fly);
@@ -106,8 +88,6 @@ express()
   })
 
   .post('/change/:id', (req, res) => {
-    //console.log(req.body);
-
     var weight = parseFloat(req.body.weight);
     var height = parseFloat(req.body.height);
     var fly = parseInt(req.body.fly);
@@ -124,8 +104,6 @@ express()
       fly = ${fly}, fight = ${fight}, fire = ${fire}, water = ${water},
       electric = ${electric}, ice = ${ice}, total = ${total},
       trainer = '${req.body.trainer}' WHERE id = ${req.params.id} RETURNING id;`;
-
-    //console.log(tokiQuery);
 
     pool.query(tokiQuery, (error, result) => {
       if (error) {
@@ -149,7 +127,6 @@ express()
   })
 
   .post('/delete/:id', (req, res) => {
-    //console.log(req.params.id);
     var tokiIDQuery = `DELETE FROM tokimon WHERE id=${req.params.id};`;
     pool.query(tokiIDQuery, (error, result) => {
       if (error) {
