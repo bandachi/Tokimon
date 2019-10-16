@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="../css/tokimon.css" />
 <% include ../partials/nav.ejs %>
 <head>
   <title>
@@ -10,31 +11,33 @@
 <body>
 
 <div class="container">
-<h2><%= tokimon.name %></h2>
+  <h2><%= tokimon.name %></h2>
 
-<div>
-  Tokimon Name: <%= tokimon.name %>
-</div>
-<div>
-  Weight: <%= tokimon.weight %>
-  Height: <%= tokimon.height %>
-</div>
-<div>
-  Fly: <%= tokimon.fly %>
-  Fight: <%= tokimon.fight %>
-  Fire: <%= tokimon.fire %>
-  Water: <%= tokimon.water %>
-  Electric: <%= tokimon.electric %>
-  Ice: <%= tokimon.ice %>
-  Total: <%= tokimon.total %>
-</div>
-<div>
-  Trainer: <%= tokimon.trainer %>
-</div>
+  <div>
+    <b>Tokimon Name:</b> <%= tokimon.name %>
+  </div>
+  <div>
+    <b>Weight:</b> <%= tokimon.weight %>
+    <b>Height:</b> <%= tokimon.height %>
+  </div>
+  <div>
+    <b>Fly:</b> <%= tokimon.fly %>
+    <b>Fight:</b> <%= tokimon.fight %>
+    <b>Fire:</b> <%= tokimon.fire %>
+    <b>Water:</b> <%= tokimon.water %>
+    <b>Electric:</b> <%= tokimon.electric %>
+    <b>Ice:</b> <%= tokimon.ice %>
+    <b>Total:</b> <%= tokimon.total %>
+  </div>
+  <div>
+    <b>Trainer:</b> <%= tokimon.trainer %>
+  </div>
 
-<form name="delete" action="/delete/<%= tokimon.id %>" method="post">
-  <input type="submit" value="Delete">
-</form>
+  <input type="button" name="change" onclick="location.href='/change/<%= tokimon.id %>';" value="Change" />
+
+  <form name="delete" action="/delete/<%= tokimon.id %>" method="post">
+    <input type="submit" value="Delete">
+  </form>
 
 </div>
 

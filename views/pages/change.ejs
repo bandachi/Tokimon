@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<% include ../partials/nav.ejs %>
+<head>
+  <title>
+    Change
+  </title>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Change a Tokimon</h2>
+
+<form name="change" action="/change/<%= tokimon.id %>" method="post">
+  <div>
+    <b>Tokimon Name:</b> <input type="text" name="tokiName" required value=<%= tokimon.name %> >
+  </div>
+  <div>
+    <b>Weight:</b> <input type="number" min = 0 name = "weight" step = any required value=<%= tokimon.weight %> />
+    <b>Height:</b> <input type="number" min = 0 name = "height" step= any required value=<%= tokimon.height %> />
+  </div>
+  <div>
+    <b>Fly:</b> <input type="number" min = 0 max = 100 name = "fly" step = 1 required value=<%= tokimon.fly %> />
+    <b>Fight:</b> <input type="number" min = 0 max = 100 name = "fight" step = 1 required value=<%= tokimon.fight %> />
+    <b>Fire:</b> <input type="number" min = 0 max = 100 name = "fire" step = 1 required value=<%= tokimon.fire %> />
+    <b>Water:</b> <input type="number" min = 0 max = 100 name = "water" step = 1 required value=<%= tokimon.water %> />
+    <b>Electric:</b> <input type="number" min = 0 max = 100 name = "electric" step = 1 required value=<%= tokimon.electric %> />
+    <b>Ice:</b> <input type="number" min = 0 max = 100 name = "ice" step = 1 required value=<%= tokimon.ice %> />
+  </div>
+  <div>
+    <b>Trainer:</b> <input type="text" name="trainer" required value=<%= tokimon.trainer %> >
+  </div>
+    <input type="submit" value="Change">
+</form>
+
+</div>
+
+</body>
+</html>

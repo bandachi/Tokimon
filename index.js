@@ -31,7 +31,7 @@ express()
     res.render('pages/add');
   })
   .post('/add', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
     var weight = parseFloat(req.body.weight);
     var height = parseFloat(req.body.height);
@@ -59,11 +59,19 @@ express()
   })
 
   .get('/change/:id', (req, res) => {
-    res.render('pages/add');
+    var tokiIDQuery = `SELECT * FROM tokimon WHERE id=${req.params.id};`;
+
+    pool.query(tokiIDQuery, (error, result) => {
+      if (error) {
+        res.end(error);
+      }
+      var tokimon = {'tokimon':result.rows[0]};
+      res.render('pages/change', tokimon)
+    })
   })
 
   .post('/change/:id', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
     var weight = parseFloat(req.body.weight);
     var height = parseFloat(req.body.height);
@@ -76,10 +84,13 @@ express()
 
     var total = fly + fight + fire + water + electric + ice;
 
-    var tokiQuery = `INSERT INTO tokimon VALUES (DEFAULT,
-      '${req.body.tokiName}', ${weight}, ${height}, ${fly}, ${fight}, ${fire},
-      ${water},  ${electric}, ${ice}, ${total}, '${req.body.trainer}')
-      RETURNING id;`;
+    var tokiQuery = `UPDATE tokimon SET
+      name='${req.body.tokiName}', weight = ${weight}, height = ${height},
+      fly = ${fly}, fight = ${fight}, fire = ${fire}, water = ${water},
+      electric = ${electric}, ice = ${ice}, total = ${total},
+      trainer = '${req.body.trainer}' WHERE id = ${req.params.id} RETURNING id;`;
+
+    //console.log(tokiQuery);
 
     pool.query(tokiQuery, (error, result) => {
       if (error) {
@@ -103,7 +114,7 @@ express()
   })
 
   .post('/delete/:id', (req, res) => {
-    console.log(req.params.id);
+    //console.log(req.params.id);
     var tokiIDQuery = `DELETE FROM tokimon WHERE id=${req.params.id};`;
     pool.query(tokiIDQuery, (error, result) => {
       if (error) {

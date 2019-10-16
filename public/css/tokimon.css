@@ -1,3 +1,26 @@
+div {
+  margin: 10px 10px;
+}
+
+input[name="change"] {
+  display: inline;
+  color: white;
+  background-color: #DC143C;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+input[type="submit"] {
+  color: white;
+  background-color: #DC143C;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+form[name="delete"] {
+  display: inline;
+}
+
 #navbar {
   list-style-type: none;
   margin: 0;
